@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joseph Layton — Mechanical Engineering Portfolio</title>
+<style>
+  :root{
+    --ink:#0E1A2B; --paper:#F5F3EE; --paper-2:#ECE8DF;
+    --steel:#3A5A78; --amber:#C8791E; --line:#D8D2C6; --muted:#5C6470;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:Georgia,"Iowan Old Style",Cambria,serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px;}
+  .wide{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .sans{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+
+  header{background:var(--ink);color:var(--paper);padding:72px 0 60px;}
+  .name{font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    font-weight:800;font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.02;letter-spacing:-0.02em;margin:0 0 18px;}
+  .lede{font-size:clamp(1.05rem,2.4vw,1.28rem);line-height:1.5;max-width:60ch;color:#D7DEE6;margin:0 0 28px;}
+  .contact{font-family:"Inter",sans-serif;font-size:0.9rem;letter-spacing:0.01em;}
+  .contact a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(245,243,238,0.35);padding-bottom:1px;}
+  .contact a:hover{border-color:var(--amber);color:#fff;}
+  .contact span.sep{color:#5C6E80;margin:0 10px;}
+
+  .spine{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(245,243,238,0.18);margin-top:40px;}
+  .spine div{padding:22px 22px 22px 0;border-right:1px solid rgba(245,243,238,0.14);}
+  .spine div:last-child{border-right:none;padding-right:0;}
+  .spine h3{font-family:"Inter",sans-serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--amber);margin:0 0 8px;font-weight:700;}
+  .spine p{font-size:0.92rem;line-height:1.45;color:#CBD3DC;margin:0;}
+
+  main{padding:64px 0 40px;}
+  .sec-label{font-family:"Inter",sans-serif;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--steel);font-weight:700;margin:0 0 6px;}
+  .sec-title{font-family:"Inter",sans-serif;font-weight:800;font-size:1.9rem;letter-spacing:-0.015em;margin:0 0 32px;line-height:1.1;}
+
+  .proj{padding:30px 0;border-top:1px solid var(--line);}
+  .proj:first-of-type{border-top:none;padding-top:0;}
+  .proj-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px;}
+  .proj-title{font-family:"Inter",sans-serif;font-weight:700;font-size:1.28rem;letter-spacing:-0.01em;margin:0;line-height:1.2;}
+  .proj-tag{font-family:"Inter",sans-serif;font-size:0.76rem;letter-spacing:0.03em;color:var(--muted);white-space:nowrap;padding-top:4px;}
+  .proj-body{font-size:1rem;line-height:1.6;color:#2A3644;margin:10px 0 0;max-width:64ch;}
+
+  .metrics{display:flex;flex-wrap:wrap;gap:28px;margin:18px 0 4px;padding:16px 0 4px;}
+  .metric{min-width:90px;}
+  .metric .val{font-family:"Inter",sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:-0.02em;color:var(--amber);font-variant-numeric:tabular-nums;line-height:1;}
+  .metric .lab{font-family:"Inter",sans-serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted);margin-top:6px;line-height:1.3;max-width:15ch;}
+  .tags{margin-top:14px;}
+  .tags span{display:inline-block;font-family:"Inter",sans-serif;font-size:0.74rem;letter-spacing:0.02em;color:var(--steel);background:var(--paper-2);border:1px solid var(--line);padding:3px 10px;border-radius:2px;margin:0 6px 6px 0;}
+
+  /* Gallery */
+  .gallery-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:60px 0;}
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:8px;}
+  figure.slide{margin:0;}
+  figure.slide a{display:block;border:1px solid var(--line);background:#fff;line-height:0;overflow:hidden;border-radius:3px;transition:border-color .15s ease;}
+  figure.slide a:hover{border-color:var(--steel);}
+  figure.slide img{width:100%;height:auto;display:block;}
+  figure.slide figcaption{font-family:"Inter",sans-serif;font-size:0.82rem;color:var(--muted);margin-top:9px;line-height:1.35;}
+  figure.slide figcaption b{color:var(--ink);font-weight:600;}
+
+  /* Lightbox via :target */
+  .lb{position:fixed;inset:0;background:rgba(14,26,43,0.94);display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:50;padding:24px;}
+  .lb:target{opacity:1;pointer-events:auto;}
+  .lb img{max-width:96vw;max-height:92vh;box-shadow:0 12px 60px rgba(0,0,0,0.5);border-radius:3px;}
+  .lb .close{position:absolute;top:20px;right:28px;color:#fff;font-family:"Inter",sans-serif;font-size:2rem;text-decoration:none;line-height:1;opacity:0.8;}
+  .lb .close:hover{opacity:1;}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-family:"Inter",sans-serif;font-size:2.4rem;text-decoration:none;opacity:0.6;padding:0 20px;user-select:none;}
+  .lb .nav:hover{opacity:1;}
+  .lb .prev{left:6px;} .lb .next{right:6px;}
+
+  footer{background:var(--ink);color:#B9C2CC;padding:44px 0;font-family:"Inter",sans-serif;font-size:0.9rem;}
+  footer a{color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(245,243,238,0.3);}
+  footer a:hover{border-color:var(--amber);}
+
+  @media (max-width:760px){
+    .spine{grid-template-columns:1fr;}
+    .spine div{border-right:none;border-bottom:1px solid rgba(245,243,238,0.14);padding:18px 0;}
+    .spine div:last-child{border-bottom:none;}
+    .gallery{grid-template-columns:1fr;}
+    body{font-size:17px;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.lb{transition:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1 class="name">Joseph Layton</h1>
+    <p class="lede">Mechanical engineering student at the University of Pittsburgh. I design, analyze, and integrate flight hardware — airframes, avionics, and test systems — and take it from CAD through to hardware that flies.</p>
+    <div class="contact">
+      <a href="mailto:JAL490@pitt.edu">JAL490@pitt.edu</a>
+      <span class="sep">·</span>
+      <a href="tel:2676448855">267-644-8855</a>
+      <span class="sep">·</span>
+      <a href="https://www.linkedin.com/in/joe-layton" target="_blank" rel="noopener" id="linkedin-link">LinkedIn</a>
+    </div>
+    <div class="spine">
+      <div><h3>Design &amp; Analysis</h3><p>SOLIDWORKS and ANSYS (static structural, transient thermal, modal). Simulation-driven structural and thermal design.</p></div>
+      <div><h3>Integration &amp; Test</h3><p>Electronics packaging, multi-sensor DAQ, avionics, and flight-hardware integration from bench to launch.</p></div>
+      <div><h3>Fabrication</h3><p>Composite layup, CNC and 3D-print fabrication, PCB design, and hands-on build across every project here.</p></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="sec-label">Selected work</p>
+  <h2 class="sec-title">Highlights</h2>
+
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Competition Rocket Airframe — Anubis</h3><span class="proj-tag">SOAR · IREC 2026</span></div>
+    <p class="proj-body">Led construction and integration of a 12&nbsp;ft, 6&nbsp;in diameter, 78&nbsp;lb competition airframe with custom fins, flown on an SRAD N-2650 motor. Applied a systems-engineering approach to integrate every sub-team's hardware, including a 3U deployable payload worked across 15 engineers; flew successfully at both test flight (MDRA) and competition (IREC).</p>
+    <div class="metrics">
+      <div class="metric"><div class="val">12&nbsp;ft</div><div class="lab">airframe length</div></div>
+      <div class="metric"><div class="val">2×</div><div class="lab">successful flights</div></div>
+      <div class="metric"><div class="val">20</div><div class="lab">engineers led</div></div>
+    </div>
+    <div class="tags"><span>SOLIDWORKS</span><span>Systems integration</span><span>Composite fabrication</span></div>
+  </article>
+
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Boat Tail — Structural &amp; Thermal FEA</h3><span class="proj-tag">ANSYS · flown on Anubis</span></div>
+    <p class="proj-body">Qualified the aft-most airframe component under 4,000&nbsp;N peak thrust from an N-class motor. Static Structural (1.2M elements, 0.5&nbsp;mm refinement at the step shoulder) and a Transient Thermal model (11 load steps, 4&nbsp;s burn → 120&nbsp;s soak) drove the geometry. Custom composite part with a 3D-printed core; flew at IREC.</p>
+    <div class="metrics">
+      <div class="metric"><div class="val">9×</div><div class="lab">yield margin</div></div>
+      <div class="metric"><div class="val">9&nbsp;µm</div><div class="lab">peak deflection</div></div>
+      <div class="metric"><div class="val">1.2M</div><div class="lab">mesh elements</div></div>
+    </div>
+    <div class="tags"><span>ANSYS Static Structural</span><span>ANSYS Transient Thermal</span><span>Composite layup</span></div>
+  </article>
+
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Active Airbrake Control System</h3><span class="proj-tag">SOAR · IREC 2025 / 2026</span></div>
+    <p class="proj-body">Designed a servo-actuated active drag system to hit a precise target apogee, with three flaps varying frontal area under closed-loop control. A servo-and-linkage mechanism converts rotational to linear motion; a Simulink lookup-table model commands deployment. Flew as a powered, integrated bay, active in-flight at IREC 2026.</p>
+    <div class="metrics">
+      <div class="metric"><div class="val">~25%</div><div class="lab">frontal-area increase</div></div>
+      <div class="metric"><div class="val">250&nbsp;ms</div><div class="lab">actuation time</div></div>
+      <div class="metric"><div class="val">10,000&nbsp;ft</div><div class="lab">target apogee</div></div>
+    </div>
+    <div class="tags"><span>Simulink</span><span>Closed-loop control</span><span>Mechanism design</span></div>
+  </article>
+
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Personal High-Power Rocketry &amp; Avionics</h3><span class="proj-tag">TRA L1/L2 certified</span></div>
+    <p class="proj-body">Built and flew multiple high-power rockets, including a TRA L2 vehicle to 2,900&nbsp;ft on an Aerotech J250W. Hand-soldered a dual-deployment flight computer transmitting live telemetry to a self-built ground station, packaged into the airframe and validated through ejection and vacuum-chamber testing. Flight data matched OpenRocket predictions to under 5%.</p>
+    <div class="metrics">
+      <div class="metric"><div class="val">611&nbsp;ft/s</div><div class="lab">peak velocity, measured</div></div>
+      <div class="metric"><div class="val">&lt;5%</div><div class="lab">deviation vs. prediction</div></div>
+      <div class="metric"><div class="val">2</div><div class="lab">recovered flights</div></div>
+    </div>
+    <div class="tags"><span>Avionics</span><span>Hand-soldered PCB</span><span>Telemetry</span></div>
+  </article>
+</main>
+
+<!-- FULL DECK -->
+<section class="gallery-band">
+  <div class="wide">
+    <p class="sec-label">The full deck</p>
+    <h2 class="sec-title">Engineering Design Portfolio</h2>
+    <div class="gallery">
+      <figure class="slide"><a href="#s3"><img src="slides/slide-03.jpeg" alt="2026 Competition Rocket Airframe Anubis" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — Anubis</b> · 2026 IREC</figcaption></figure>
+      <figure class="slide"><a href="#s4"><img src="slides/slide-04.jpeg" alt="Boat Tail FEA/Thermal ANSYS" loading="lazy"></a><figcaption><b>Boat Tail FEA / Thermal</b> · ANSYS</figcaption></figure>
+      <figure class="slide"><a href="#s5"><img src="slides/slide-05.jpeg" alt="Active Control System" loading="lazy"></a><figcaption><b>Active Airbrake Control System</b></figcaption></figure>
+      <figure class="slide"><a href="#s6"><img src="slides/slide-06.jpeg" alt="CMI2 Data Collection Black Box" loading="lazy"></a><figcaption><b>CMI² Data Collection Module</b> · UAS "black box"</figcaption></figure>
+      <figure class="slide"><a href="#s7"><img src="slides/slide-07.jpeg" alt="Personal TRA L1/L2 Rockets" loading="lazy"></a><figcaption><b>Personal TRA L1/L2 Rockets</b></figcaption></figure>
+      <figure class="slide"><a href="#s8"><img src="slides/slide-08.jpeg" alt="2025 Competition Rocket Airframe PAX1" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — PAX-1</b> · 2025 IREC</figcaption></figure>
+      <figure class="slide"><a href="#s9"><img src="slides/slide-09.jpeg" alt="Amoeba-1 Flight Data" loading="lazy"></a><figcaption><b>Amoeba-1 Flight Data</b></figcaption></figure>
+      <figure class="slide"><a href="#s10"><img src="slides/slide-10.jpeg" alt="CFD Study of Laminar/Turbulent Flow" loading="lazy"></a><figcaption><b>CFD Study — Laminar / Turbulent Flow</b></figcaption></figure>
+      <figure class="slide"><a href="#s11"><img src="slides/slide-11.jpeg" alt="SRAD Motor Development" loading="lazy"></a><figcaption><b>SRAD Motor Development</b></figcaption></figure>
+      <figure class="slide"><a href="#s12"><img src="slides/slide-12.jpeg" alt="CMI2 UAS Support on Dirt Days" loading="lazy"></a><figcaption><b>CMI² UAS Support — Dirt Days</b></figcaption></figure>
+      <figure class="slide"><a href="#s13"><img src="slides/slide-13.jpeg" alt="FRA UL9540A Testing" loading="lazy"></a><figcaption><b>FRA — UL9540A Battery-Safety Testing</b></figcaption></figure>
+      <figure class="slide"><a href="#s14"><img src="slides/slide-14.jpeg" alt="Fin Flutter Margin Modal Analysis" loading="lazy"></a><figcaption><b>Fin Flutter Margin — Modal Analysis</b></figcaption></figure>
+      <figure class="slide"><a href="#s15"><img src="slides/slide-15.jpeg" alt="FRA CNC Electronics" loading="lazy"></a><figcaption><b>FRA — CNC Electronics &amp; PCB</b></figcaption></figure>
+      <figure class="slide"><a href="#s16"><img src="slides/slide-16.jpeg" alt="FRA 4S System Design" loading="lazy"></a><figcaption><b>FRA — 4S Test System Design</b></figcaption></figure>
+      <figure class="slide"><a href="#s17"><img src="slides/slide-17.jpeg" alt="FRA Fume hood CAD" loading="lazy"></a><figcaption><b>FRA — Fume Hood CAD</b></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Joseph Layton — Mechanical Engineering, University of Pittsburgh (B.S. 2027 · M.S. 2028).<br>
+    Reach me at <a href="mailto:JAL490@pitt.edu">JAL490@pitt.edu</a>.
+  </div>
+</footer>
+
+<!-- Lightboxes -->
+<div class="lb" id="s3"><a href="#" class="close">×</a><a href="#s17" class="nav prev">‹</a><img src="slides/slide-03.jpeg" alt=""><a href="#s4" class="nav next">›</a></div>
+<div class="lb" id="s4"><a href="#" class="close">×</a><a href="#s3" class="nav prev">‹</a><img src="slides/slide-04.jpeg" alt=""><a href="#s5" class="nav next">›</a></div>
+<div class="lb" id="s5"><a href="#" class="close">×</a><a href="#s4" class="nav prev">‹</a><img src="slides/slide-05.jpeg" alt=""><a href="#s6" class="nav next">›</a></div>
+<div class="lb" id="s6"><a href="#" class="close">×</a><a href="#s5" class="nav prev">‹</a><img src="slides/slide-06.jpeg" alt=""><a href="#s7" class="nav next">›</a></div>
+<div class="lb" id="s7"><a href="#" class="close">×</a><a href="#s6" class="nav prev">‹</a><img src="slides/slide-07.jpeg" alt=""><a href="#s8" class="nav next">›</a></div>
+<div class="lb" id="s8"><a href="#" class="close">×</a><a href="#s7" class="nav prev">‹</a><img src="slides/slide-08.jpeg" alt=""><a href="#s9" class="nav next">›</a></div>
+<div class="lb" id="s9"><a href="#" class="close">×</a><a href="#s8" class="nav prev">‹</a><img src="slides/slide-09.jpeg" alt=""><a href="#s10" class="nav next">›</a></div>
+<div class="lb" id="s10"><a href="#" class="close">×</a><a href="#s9" class="nav prev">‹</a><img src="slides/slide-10.jpeg" alt=""><a href="#s11" class="nav next">›</a></div>
+<div class="lb" id="s11"><a href="#" class="close">×</a><a href="#s10" class="nav prev">‹</a><img src="slides/slide-11.jpeg" alt=""><a href="#s12" class="nav next">›</a></div>
+<div class="lb" id="s12"><a href="#" class="close">×</a><a href="#s11" class="nav prev">‹</a><img src="slides/slide-12.jpeg" alt=""><a href="#s13" class="nav next">›</a></div>
+<div class="lb" id="s13"><a href="#" class="close">×</a><a href="#s12" class="nav prev">‹</a><img src="slides/slide-13.jpeg" alt=""><a href="#s14" class="nav next">›</a></div>
+<div class="lb" id="s14"><a href="#" class="close">×</a><a href="#s13" class="nav prev">‹</a><img src="slides/slide-14.jpeg" alt=""><a href="#s15" class="nav next">›</a></div>
+<div class="lb" id="s15"><a href="#" class="close">×</a><a href="#s14" class="nav prev">‹</a><img src="slides/slide-15.jpeg" alt=""><a href="#s16" class="nav next">›</a></div>
+<div class="lb" id="s16"><a href="#" class="close">×</a><a href="#s15" class="nav prev">‹</a><img src="slides/slide-16.jpeg" alt=""><a href="#s17" class="nav next">›</a></div>
+<div class="lb" id="s17"><a href="#" class="close">×</a><a href="#s16" class="nav prev">‹</a><img src="slides/slide-17.jpeg" alt=""><a href="#s3" class="nav next">›</a></div>
+
+</body>
+</html>
