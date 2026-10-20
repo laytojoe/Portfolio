@@ -50,6 +50,7 @@
   .tags{margin-top:14px;}
   .tags span{display:inline-block;font-family:"Inter",sans-serif;font-size:0.74rem;letter-spacing:0.02em;color:var(--steel);background:var(--paper-2);border:1px solid var(--line);padding:3px 10px;border-radius:2px;margin:0 6px 6px 0;}
 
+  .proj-tag.wip{color:var(--amber);}
   /* Gallery */
   .gallery-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:60px 0;}
   .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:8px;}
@@ -90,18 +91,20 @@
 <header>
   <div class="wrap">
     <h1 class="name">Joseph Layton</h1>
-    <p class="lede">Mechanical engineering student at the University of Pittsburgh. I design, analyze, and integrate flight hardware — airframes, avionics, and test systems — and take it from CAD through to hardware that flies.</p>
+    <p class="lede">Mechanical engineering student at the University of Pittsburgh. I design, analyze, and test flight hardware — rocket airframes, UAS and counter-UAS systems, and the rigs that test them — and take it from CAD through to hardware that flies.</p>
     <div class="contact">
       <a href="mailto:JAL490@pitt.edu">JAL490@pitt.edu</a>
       <span class="sep">·</span>
       <a href="tel:2676448855">267-644-8855</a>
       <span class="sep">·</span>
       <a href="https://www.linkedin.com/in/joe-layton" target="_blank" rel="noopener" id="linkedin-link">LinkedIn</a>
+      <span class="sep">·</span>
+      <span>U.S. Citizen</span>
     </div>
     <div class="spine">
-      <div><h3>Design &amp; Analysis</h3><p>SOLIDWORKS and ANSYS (static structural, transient thermal, modal). Simulation-driven structural and thermal design.</p></div>
-      <div><h3>Integration &amp; Test</h3><p>Electronics packaging, multi-sensor DAQ, avionics, and flight-hardware integration from bench to launch.</p></div>
-      <div><h3>Fabrication</h3><p>Composite layup, CNC and 3D-print fabrication, PCB design, and hands-on build across every project here.</p></div>
+      <div><h3>Design &amp; Analysis</h3><p>SOLIDWORKS, Fusion 360, Onshape; ANSYS static structural, transient thermal, modal, and CFD; MATLAB/Simulink. Simulation-driven structural and thermal design.</p></div>
+      <div><h3>Integration &amp; Test</h3><p>Mechanical/electrical integration, multi-sensor DAQ, avionics (FCU/ESC, ArduPilot), flight and static-fire testing from bench to launch.</p></div>
+      <div><h3>Fabrication &amp; DFM</h3><p>Composite layup, CNC and 3D-print fabrication, fixture design, PCB design, and DFM/DFA across every project here.</p></div>
     </div>
   </div>
 </header>
@@ -112,46 +115,50 @@
 
   <article class="proj">
     <div class="proj-head"><h3 class="proj-title">Competition Rocket Airframe — Anubis</h3><span class="proj-tag">SOAR · IREC 2026</span></div>
-    <p class="proj-body">Led construction and integration of a 12&nbsp;ft, 6&nbsp;in diameter, 78&nbsp;lb competition airframe with custom fins, flown on an SRAD N-2650 motor. Applied a systems-engineering approach to integrate every sub-team's hardware, including a 3U deployable payload worked across 15 engineers; flew successfully at both test flight (MDRA) and competition (IREC).</p>
-    <div class="metrics">
-      <div class="metric"><div class="val">12&nbsp;ft</div><div class="lab">airframe length</div></div>
-      <div class="metric"><div class="val">2×</div><div class="lab">successful flights</div></div>
-      <div class="metric"><div class="val">20</div><div class="lab">engineers led</div></div>
-    </div>
+    <p class="proj-body">Led construction and testing of a 12&nbsp;ft, 6&nbsp;in diameter, 78&nbsp;lb competition airframe with custom fins and a drag-reducing boat tail, flown on an SRAD N-2650 motor. Applied a systems-engineering approach to integrate every sub-team's hardware, including a deployable 3U CubeSat payload worked across 15 engineers. Flew successfully at both test flight (MDRA) and competition (IREC).</p>
+    <div class="metrics"><div class="metric"><div class="val">12&nbsp;ft</div><div class="lab">airframe length</div></div><div class="metric"><div class="val">2×</div><div class="lab">successful flights</div></div><div class="metric"><div class="val">N-2650</div><div class="lab">SRAD motor</div></div></div>
     <div class="tags"><span>SOLIDWORKS</span><span>Systems integration</span><span>Composite fabrication</span></div>
   </article>
-
   <article class="proj">
     <div class="proj-head"><h3 class="proj-title">Boat Tail — Structural &amp; Thermal FEA</h3><span class="proj-tag">ANSYS · flown on Anubis</span></div>
-    <p class="proj-body">Qualified the aft-most airframe component under 4,000&nbsp;N peak thrust from an N-class motor. Static Structural (1.2M elements, 0.5&nbsp;mm refinement at the step shoulder) and a Transient Thermal model (11 load steps, 4&nbsp;s burn → 120&nbsp;s soak) drove the geometry. Custom composite part with a 3D-printed core; flew at IREC.</p>
-    <div class="metrics">
-      <div class="metric"><div class="val">9×</div><div class="lab">yield margin</div></div>
-      <div class="metric"><div class="val">9&nbsp;µm</div><div class="lab">peak deflection</div></div>
-      <div class="metric"><div class="val">1.2M</div><div class="lab">mesh elements</div></div>
-    </div>
-    <div class="tags"><span>ANSYS Static Structural</span><span>ANSYS Transient Thermal</span><span>Composite layup</span></div>
+    <p class="proj-body">Qualified the aft-most airframe component (motor retainer and base-drag reduction) under 4,000&nbsp;N peak thrust from an N-class motor, using ANSYS Static Structural and Transient Thermal (4&nbsp;s burn → 120&nbsp;s soak). The 243&nbsp;°C peak stays confined to the bore surface for under a second; the bulk averages ~31&nbsp;°C and the PPA-CF body never exceeds 39&nbsp;°C, well below its Tg. Flew at IREC.</p>
+    <div class="metrics"><div class="metric"><div class="val">4,000&nbsp;N</div><div class="lab">peak thrust load</div></div><div class="metric"><div class="val">39&nbsp;°C</div><div class="lab">max body temp</div></div><div class="metric"><div class="val">&lt;1&nbsp;s</div><div class="lab">bore peak duration</div></div></div>
+    <div class="tags"><span>ANSYS Static Structural</span><span>ANSYS Transient Thermal</span><span>PPA-CF</span></div>
   </article>
-
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Static-Fire Stand — Failure &amp; Redesign</h3><span class="proj-tag">SOAR · propulsion test</span></div>
+    <p class="proj-body">An off-nominal SRAD propellant burn pushed peak force past 1,400&nbsp;lbf and chamber pressure above 800&nbsp;psi, failing a stand sized for nominal thrust with no margin. Root-caused the failure and redesigned the stand with new materials and structural supports, verified in ANSYS to a factor of safety of 3.2. The new stand has since supported successful N2650 static fires.</p>
+    <div class="metrics"><div class="metric"><div class="val">&gt;1,400&nbsp;lbf</div><div class="lab">off-nominal peak force</div></div><div class="metric"><div class="val">&gt;800&nbsp;psi</div><div class="lab">chamber pressure</div></div><div class="metric"><div class="val">3.2</div><div class="lab">verified FOS</div></div></div>
+    <div class="tags"><span>Failure analysis</span><span>ANSYS</span><span>Test-stand design</span></div>
+  </article>
   <article class="proj">
     <div class="proj-head"><h3 class="proj-title">Active Airbrake Control System</h3><span class="proj-tag">SOAR · IREC 2025 / 2026</span></div>
-    <p class="proj-body">Designed a servo-actuated active drag system to hit a precise target apogee, with three flaps varying frontal area under closed-loop control. A servo-and-linkage mechanism converts rotational to linear motion; a Simulink lookup-table model commands deployment. Flew as a powered, integrated bay, active in-flight at IREC 2026.</p>
-    <div class="metrics">
-      <div class="metric"><div class="val">~25%</div><div class="lab">frontal-area increase</div></div>
-      <div class="metric"><div class="val">250&nbsp;ms</div><div class="lab">actuation time</div></div>
-      <div class="metric"><div class="val">10,000&nbsp;ft</div><div class="lab">target apogee</div></div>
-    </div>
+    <p class="proj-body">Led the team building a servo-actuated active drag system to hit a precise 10,000 ft target apogee, with three flaps varying frontal area under closed-loop control. A servo-and-linkage mechanism converts rotational to linear motion; a Simulink look-up-table model commands deployment. Flew as a powered, integrated bay, active in flight at IREC 2026.</p>
+    <div class="metrics"><div class="metric"><div class="val">~25%</div><div class="lab">drag-area increase</div></div><div class="metric"><div class="val">250&nbsp;ms</div><div class="lab">actuation time</div></div><div class="metric"><div class="val">10,000&nbsp;ft</div><div class="lab">target apogee</div></div></div>
     <div class="tags"><span>Simulink</span><span>Closed-loop control</span><span>Mechanism design</span></div>
   </article>
-
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Counter-UAS Optical Tracking Gimbal</h3><span class="proj-tag">Senior design · CMI² sponsor · in progress</span></div>
+    <p class="proj-body">Subsystem lead for optical tracking and gimbal on a passive-sensor counter-UAS system. Integrated a YOLO UAS-detection model into the gimbal tracking loop, feeding bounding-box error to the pointing controller. Modeling gimbal dynamics and designing closed-loop pointing control in MATLAB/Simulink for embedded deployment, and leading the compute and actuation trade studies.</p>
+    <div class="tags"><span>MATLAB / Simulink</span><span>Closed-loop pointing control</span><span>YOLO detection</span><span>Trade studies</span></div>
+  </article>
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Fin Flutter Margin — Modal Analysis</h3><span class="proj-tag">ANSYS · carbon fiber fins</span></div>
+    <p class="proj-body">Studied bending/torsion frequency separation to raise flutter margin at Mach 0.85–0.9, sweeping leading-edge angle on a quasi-isotropic carbon fiber plate. Mode 1 bending stayed flat at ~137 Hz while Mode 2 torsion rose 23% (177 → 217 Hz). Selected the 55° sweep, lifting the torsion-to-bending ratio from 1.29 to 1.58 with no bending-stiffness penalty.</p>
+    <div class="metrics"><div class="metric"><div class="val">1.29 → 1.58</div><div class="lab">torsion / bending ratio</div></div><div class="metric"><div class="val">+23%</div><div class="lab">torsion frequency</div></div><div class="metric"><div class="val">~137&nbsp;Hz</div><div class="lab">bending mode, flat</div></div></div>
+    <div class="tags"><span>ANSYS Modal</span><span>Composites</span><span>Parametric study</span></div>
+  </article>
+  <article class="proj">
+    <div class="proj-head"><h3 class="proj-title">Defense UAS &amp; Counter-UAS Evaluation</h3><span class="proj-tag">CMI² · 2026 – present</span></div>
+    <p class="proj-body">As a UAS Engineering Intern, evaluated sUAS, counter-UAS, and contested-logistics technologies for CENTCOM and DEVCOM ARL at Camp Grayling, integrated UAS avionics and FCU/ESC firmware, and developed a 1,000-unit/week manufacturing process for a novel UAS. Rehired as an Observer Controller Evaluator contractor; served as OC/E at a CENTCOM event at Smoky Hill ANG Range evaluating defensive systems, translating Soldier feedback into engineering input for developers.</p>
+    <div class="metrics"><div class="metric"><div class="val">1,000/wk</div><div class="lab">UAS line rate designed</div></div><div class="metric"><div class="val">−30%</div><div class="lab">thermal-screen deploy time</div></div></div>
+    <div class="tags"><span>ArduPilot</span><span>Avionics integration</span><span>DFM / line balancing</span><span>Field test</span></div>
+  </article>
   <article class="proj">
     <div class="proj-head"><h3 class="proj-title">Personal High-Power Rocketry &amp; Avionics</h3><span class="proj-tag">TRA L1/L2 certified</span></div>
-    <p class="proj-body">Built and flew multiple high-power rockets, including a TRA L2 vehicle to 2,900&nbsp;ft on an Aerotech J250W. Hand-soldered a dual-deployment flight computer transmitting live telemetry to a self-built ground station, packaged into the airframe and validated through ejection and vacuum-chamber testing. Flight data matched OpenRocket predictions to under 5%.</p>
-    <div class="metrics">
-      <div class="metric"><div class="val">611&nbsp;ft/s</div><div class="lab">peak velocity, measured</div></div>
-      <div class="metric"><div class="val">&lt;5%</div><div class="lab">deviation vs. prediction</div></div>
-      <div class="metric"><div class="val">2</div><div class="lab">recovered flights</div></div>
-    </div>
-    <div class="tags"><span>Avionics</span><span>Hand-soldered PCB</span><span>Telemetry</span></div>
+    <p class="proj-body">Built and flew TRA L1 and L2 rockets, including Amoeba-1 to 2,960&nbsp;ft on an Aerotech J250W. Hand-soldered a dual-deployment flight computer transmitting live telemetry to a self-built ground station; flight data matched OpenRocket predictions to under 5% across two recovered flights. Now flight-ready: a fully 3D-printed PA6-GF 38&nbsp;mm minimum-diameter rocket predicted to reach Mach 0.8 and 4,500&nbsp;ft on an H100.</p>
+    <div class="metrics"><div class="metric"><div class="val">611&nbsp;ft/s</div><div class="lab">peak velocity, measured</div></div><div class="metric"><div class="val">&lt;5%</div><div class="lab">deviation vs. prediction</div></div><div class="metric"><div class="val">Mach 0.8</div><div class="lab">38 mm design, predicted</div></div></div>
+    <div class="tags"><span>Avionics</span><span>Telemetry</span><span>Additive manufacturing</span></div>
   </article>
 </main>
 
@@ -161,34 +168,36 @@
     <p class="sec-label">The full deck</p>
     <h2 class="sec-title">Engineering Design Portfolio</h2>
     <div class="gallery">
-      <figure class="slide"><a href="#s3"><img src="slides/slide-03.jpeg" alt="2026 Competition Rocket Airframe Anubis" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — Anubis</b> · 2026 IREC</figcaption></figure>
-      <figure class="slide"><a href="#s4"><img src="slides/slide-04.jpeg" alt="Boat Tail FEA/Thermal ANSYS" loading="lazy"></a><figcaption><b>Boat Tail FEA / Thermal</b> · ANSYS</figcaption></figure>
-      <figure class="slide"><a href="#s5"><img src="slides/slide-05.jpeg" alt="Active Control System" loading="lazy"></a><figcaption><b>Active Airbrake Control System</b></figcaption></figure>
-      <figure class="slide"><a href="#s6"><img src="slides/slide-06.jpeg" alt="CMI2 Data Collection Black Box" loading="lazy"></a><figcaption><b>CMI² Data Collection Module</b> · UAS "black box"</figcaption></figure>
-      <figure class="slide"><a href="#s7"><img src="slides/slide-07.jpeg" alt="Personal TRA L1/L2 Rockets" loading="lazy"></a><figcaption><b>Personal TRA L1/L2 Rockets</b></figcaption></figure>
-      <figure class="slide"><a href="#s8"><img src="slides/slide-08.jpeg" alt="2025 Competition Rocket Airframe PAX1" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — PAX-1</b> · 2025 IREC</figcaption></figure>
-      <figure class="slide"><a href="#s9"><img src="slides/slide-09.jpeg" alt="Amoeba-1 Flight Data" loading="lazy"></a><figcaption><b>Amoeba-1 Flight Data</b></figcaption></figure>
-      <figure class="slide"><a href="#s10"><img src="slides/slide-10.jpeg" alt="CFD Study of Laminar/Turbulent Flow" loading="lazy"></a><figcaption><b>CFD Study — Laminar / Turbulent Flow</b></figcaption></figure>
-      <figure class="slide"><a href="#s11"><img src="slides/slide-11.jpeg" alt="SRAD Motor Development" loading="lazy"></a><figcaption><b>SRAD Motor Development</b></figcaption></figure>
-      <figure class="slide"><a href="#s12"><img src="slides/slide-12.jpeg" alt="CMI2 UAS Support on Dirt Days" loading="lazy"></a><figcaption><b>CMI² UAS Support — Dirt Days</b></figcaption></figure>
-      <figure class="slide"><a href="#s13"><img src="slides/slide-13.jpeg" alt="FRA UL9540A Testing" loading="lazy"></a><figcaption><b>FRA — UL9540A Battery-Safety Testing</b></figcaption></figure>
-      <figure class="slide"><a href="#s14"><img src="slides/slide-14.jpeg" alt="Fin Flutter Margin Modal Analysis" loading="lazy"></a><figcaption><b>Fin Flutter Margin — Modal Analysis</b></figcaption></figure>
-      <figure class="slide"><a href="#s15"><img src="slides/slide-15.jpeg" alt="FRA CNC Electronics" loading="lazy"></a><figcaption><b>FRA — CNC Electronics &amp; PCB</b></figcaption></figure>
-      <figure class="slide"><a href="#s16"><img src="slides/slide-16.jpeg" alt="FRA 4S System Design" loading="lazy"></a><figcaption><b>FRA — 4S Test System Design</b></figcaption></figure>
-      <figure class="slide"><a href="#s17"><img src="slides/slide-17.jpeg" alt="FRA Fume hood CAD" loading="lazy"></a><figcaption><b>FRA — Fume Hood CAD</b></figcaption></figure>
+      <figure class="slide"><a href="#s3"><img src="slides/slide-03.jpeg" alt="Competition Rocket Airframe — Anubis" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — Anubis</b> · 2026 IREC</figcaption></figure>
+      <figure class="slide"><a href="#s4"><img src="slides/slide-04.jpeg" alt="Boat Tail FEA / Thermal" loading="lazy"></a><figcaption><b>Boat Tail FEA / Thermal</b> · ANSYS</figcaption></figure>
+      <figure class="slide"><a href="#s5"><img src="slides/slide-05.jpeg" alt="Fin Flutter Margin — Modal Analysis" loading="lazy"></a><figcaption><b>Fin Flutter Margin — Modal Analysis</b> · ANSYS</figcaption></figure>
+      <figure class="slide"><a href="#s6"><img src="slides/slide-06.jpeg" alt="SRAD Motor Development" loading="lazy"></a><figcaption><b>SRAD Motor Development</b></figcaption></figure>
+      <figure class="slide"><a href="#s7"><img src="slides/slide-07.jpeg" alt="Static-Fire Stand — Failure  Redesign" loading="lazy"></a><figcaption><b>Static-Fire Stand — Failure &amp; Redesign</b></figcaption></figure>
+      <figure class="slide"><a href="#s8"><img src="slides/slide-08.jpeg" alt="Active Airbrake Control System" loading="lazy"></a><figcaption><b>Active Airbrake Control System</b></figcaption></figure>
+      <figure class="slide"><a href="#s9"><img src="slides/slide-09.jpeg" alt="Competition Rocket Airframe — PAX-1" loading="lazy"></a><figcaption><b>Competition Rocket Airframe — PAX-1</b> · 2025 IREC</figcaption></figure>
+      <figure class="slide"><a href="#s10"><img src="slides/slide-10.jpeg" alt="Personal TRA L1/L2 Rockets" loading="lazy"></a><figcaption><b>Personal TRA L1/L2 Rockets</b></figcaption></figure>
+      <figure class="slide"><a href="#s11"><img src="slides/slide-11.jpeg" alt="Amoeba-1 Flight Data" loading="lazy"></a><figcaption><b>Amoeba-1 Flight Data</b></figcaption></figure>
+      <figure class="slide"><a href="#s12"><img src="slides/slide-12.jpeg" alt="3D-Printed 38 mm Minimum-Diameter Rocket" loading="lazy"></a><figcaption><b>3D-Printed 38 mm Minimum-Diameter Rocket</b> · PA6-GF</figcaption></figure>
+      <figure class="slide"><a href="#s13"><img src="slides/slide-13.jpeg" alt="CMI2 Data Collection Module" loading="lazy"></a><figcaption><b>CMI² Data Collection Module</b> · UAS "black box"</figcaption></figure>
+      <figure class="slide"><a href="#s14"><img src="slides/slide-14.jpeg" alt="CFD Study — Laminar / Turbulent Flow" loading="lazy"></a><figcaption><b>CFD Study — Laminar / Turbulent Flow</b></figcaption></figure>
+      <figure class="slide"><a href="#s15"><img src="slides/slide-15.jpeg" alt="FRA — 4S Test System Design" loading="lazy"></a><figcaption><b>FRA — 4S Test System Design</b></figcaption></figure>
+      <figure class="slide"><a href="#s16"><img src="slides/slide-16.jpeg" alt="FRA — UL9540A Battery-Safety Testing" loading="lazy"></a><figcaption><b>FRA — UL9540A Battery-Safety Testing</b></figcaption></figure>
+      <figure class="slide"><a href="#s17"><img src="slides/slide-17.jpeg" alt="FRA — Fume Hood CAD" loading="lazy"></a><figcaption><b>FRA — Fume Hood CAD</b></figcaption></figure>
+      <figure class="slide"><a href="#s18"><img src="slides/slide-18.jpeg" alt="CMI2 UAS Support — Dirt Days" loading="lazy"></a><figcaption><b>CMI² UAS Support — Dirt Days</b></figcaption></figure>
+      <figure class="slide"><a href="#s19"><img src="slides/slide-19.jpeg" alt="FRA — CNC Electronics  PCB" loading="lazy"></a><figcaption><b>FRA — CNC Electronics &amp; PCB</b></figcaption></figure>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    Joseph Layton — Mechanical Engineering, University of Pittsburgh (B.S. 2027 · M.S. 2028).<br>
+    Joseph Layton — B.S. Mechanical Engineering, University of Pittsburgh (expected May 2027).<br>
     Reach me at <a href="mailto:JAL490@pitt.edu">JAL490@pitt.edu</a>.
   </div>
 </footer>
 
 <!-- Lightboxes -->
-<div class="lb" id="s3"><a href="#" class="close">×</a><a href="#s17" class="nav prev">‹</a><img src="slides/slide-03.jpeg" alt=""><a href="#s4" class="nav next">›</a></div>
+<div class="lb" id="s3"><a href="#" class="close">×</a><a href="#s19" class="nav prev">‹</a><img src="slides/slide-03.jpeg" alt=""><a href="#s4" class="nav next">›</a></div>
 <div class="lb" id="s4"><a href="#" class="close">×</a><a href="#s3" class="nav prev">‹</a><img src="slides/slide-04.jpeg" alt=""><a href="#s5" class="nav next">›</a></div>
 <div class="lb" id="s5"><a href="#" class="close">×</a><a href="#s4" class="nav prev">‹</a><img src="slides/slide-05.jpeg" alt=""><a href="#s6" class="nav next">›</a></div>
 <div class="lb" id="s6"><a href="#" class="close">×</a><a href="#s5" class="nav prev">‹</a><img src="slides/slide-06.jpeg" alt=""><a href="#s7" class="nav next">›</a></div>
@@ -202,7 +211,9 @@
 <div class="lb" id="s14"><a href="#" class="close">×</a><a href="#s13" class="nav prev">‹</a><img src="slides/slide-14.jpeg" alt=""><a href="#s15" class="nav next">›</a></div>
 <div class="lb" id="s15"><a href="#" class="close">×</a><a href="#s14" class="nav prev">‹</a><img src="slides/slide-15.jpeg" alt=""><a href="#s16" class="nav next">›</a></div>
 <div class="lb" id="s16"><a href="#" class="close">×</a><a href="#s15" class="nav prev">‹</a><img src="slides/slide-16.jpeg" alt=""><a href="#s17" class="nav next">›</a></div>
-<div class="lb" id="s17"><a href="#" class="close">×</a><a href="#s16" class="nav prev">‹</a><img src="slides/slide-17.jpeg" alt=""><a href="#s3" class="nav next">›</a></div>
+<div class="lb" id="s17"><a href="#" class="close">×</a><a href="#s16" class="nav prev">‹</a><img src="slides/slide-17.jpeg" alt=""><a href="#s18" class="nav next">›</a></div>
+<div class="lb" id="s18"><a href="#" class="close">×</a><a href="#s17" class="nav prev">‹</a><img src="slides/slide-18.jpeg" alt=""><a href="#s19" class="nav next">›</a></div>
+<div class="lb" id="s19"><a href="#" class="close">×</a><a href="#s18" class="nav prev">‹</a><img src="slides/slide-19.jpeg" alt=""><a href="#s3" class="nav next">›</a></div>
 
 </body>
 </html>
